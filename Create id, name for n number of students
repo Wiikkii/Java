@@ -1,1 +1,39 @@
+// Student class
+class Student{  
 
+ private int id;
+ private String name;
+public Student(int i,String n){
+     id=i;
+     name=n;
+ }
+ int getid(){
+     return id;
+ }
+ String getname(){
+     return name;
+ }
+ 
+}  
+//Main class
+import java.util.*;
+class Main{
+public static void main(String args[]){  
+    Scanner sc=new Scanner(System.in);
+  Student[] student=new Student[3];
+  for(int i=0;i<student.length;i++){
+      System.out.println("Enter details for Student " + (i + 1) + ":");
+      System.out.print("Enter ID: ");
+      int id=sc.nextInt();
+      System.out.println();
+      System.out.print("Enter Name: ");
+      String name=sc.next();
+      student[i]=new Student(id, name);
+  }
+  for (int i = 0; i < student.length; i++) {
+            System.out.println("Student " + (i + 1) + " - ID: " + student[i].getid() + ", Name: " + student[i].getname());
+        }
+    }
+   
+ }
+Thank you
