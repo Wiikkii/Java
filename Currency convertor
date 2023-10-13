@@ -1,0 +1,51 @@
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Main {
+    public static void convertCurrency(String fromCode, String toCode, double amount) {
+        // Conversion rates
+        HashMap<String, Double> conversionRates = new HashMap<>();
+        conversionRates.put("USD", 1.0);
+        conversionRates.put("IND", 83.0);
+        conversionRates.put("CAN", 1.37);
+        conversionRates.put("UK", 0.82);
+        conversionRates.put("BAH", 0.38);
+
+        if (conversionRates.containsKey(fromCode) && conversionRates.containsKey(toCode)) {
+            double fromRate = conversionRates.get(fromCode);
+            double toRate = conversionRates.get(toCode);
+            double convertedAmount = amount * (toRate / fromRate);
+
+            System.out.println("Converted amount: " + toCode + " " + convertedAmount);
+        } else {
+            System.out.println("Invalid currency codes");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        HashMap<Integer, String> currency = new HashMap<>();
+        currency.put(1, "USD");
+        currency.put(2, "IND");
+        currency.put(3, "CAN");
+        currency.put(4, "UK");
+        currency.put(5, "BAH");
+
+        System.out.println("Welcome to Currency Converter!!");
+        System.out.println("Convert from:");
+        System.out.println("1-USD, 2-IND, 3-CAN, 4-UK, 5-BAH");
+        int fromChoice = sc.nextInt();
+        String fromCode = currency.get(fromChoice);
+
+        System.out.println("Convert to:");
+        System.out.println("1-USD, 2-IND, 3-CAN, 4-UK, 5-BAH");
+        int toChoice = sc.nextInt();
+        String toCode = currency.get(toChoice);
+
+        System.out.print("Enter the amount: ");
+        double amount = sc.nextDouble();
+
+        convertCurrency(fromCode, toCode, amount);
+    }
+}
